@@ -14,8 +14,9 @@ class Player(pg.sprite.Sprite):
 
         # Create an image of the block, and fill it with a color.
         # This could also be an image loaded from the disk.
-        self.image = pg.Surface([P_WIDTH, P_HEIGTH])
-        self.image.fill(color)
+        # self.image = pg.Surface([P_WIDTH, P_HEIGTH])
+        # self.image.fill(color)
+        self.image = pg.image.load(P_IMAGE).convert_alpha()
 
         # Fetch the rectangle object that has the dimensions of the image
         # Update the position of this object by setting the values of rect.x and rect.y
@@ -43,8 +44,16 @@ class Player(pg.sprite.Sprite):
             self.direction.x = 0
 
     def move(self, dt):
-        self.position += self.direction * P_SPEED * dt
-        self.rect.center = self.position
+        # normalizing vector
+        if self.direction.magnitude() > 0:
+            self.direction = self.direction.normalize()
+
+        # horizontal movement
+        self.position.x += self.direction.x * P_SPEED * dt
+        self.rect.centerx = self.position.x
+        # vertical movement
+        self.position.y += self.direction.y * P_SPEED * dt
+        self.rect.centery = self.position.y
 
     def update(self, dt) -> None:
         self.input()

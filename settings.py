@@ -3,6 +3,7 @@ SCREEN_WIDTH = 600
 SCREEN_HEIGHT = 700
 TITLE = "Game Test"
 
+
 # FPS
 FPS = 60
 
@@ -19,3 +20,4 @@ WHITE = (255, 255, 255)
 P_WIDTH = 25
 P_HEIGTH = 50
 P_SPEED = 200
+P_IMAGE = "./assets/Tanks/tankBlue.png"

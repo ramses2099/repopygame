@@ -4,6 +4,7 @@ import pygame as pg
 
 from level import Level
 from settings import *
+from support import *
 
 
 class Game:
